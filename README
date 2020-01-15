@@ -1,0 +1,100 @@
+=================
+JIANU Maria 331CB
+Tema 3 APD
+=================
+
+Pasi:
+
+1. Procesul cu rank 0 citeste imaginea initiala.
+2. Se trimit si se primesc prin Bcast informatiile despre imagine.
+3. Pentru fiecare filtru, fiecare proces aplica schimbarile corespunzatoare
+pe sectiunea lui de matrice calculata prin indicii START si STOP.
+
+=> Indicii sunt calculati asemanator indicilor de la pthreads, in functie de
+numarul total de procese dar si de rezolutia imaginii.
+
+4. Fiecare proces trimite portiunea calculata inapoi la procescu cu rank-ul
+0 care compune noua poza.
+
+
+Timpii de executie:
+
+------------------------------------------------------
+	Pentru cea mai mare imagine color (landscape.pnm): 
+
+Cu filtrul 'blur':
+	a) pentru un proces:
+	
+	real	0m5.457s
+	user	0m2.396s
+	sys	0m1.979s
+
+	Dupa 5 rulari media este de aproximativ 0m5.3s.
+
+	b) pentru doua procese:
+	
+	real	0m2.816s
+	user	0m1.613s
+	sys	0m0.699s
+
+	Dupa 5 rulari media este de aproximativ 0m2.7s.
+
+	c) pentru 4 procese:
+
+	real	0m1.447s
+	user	0m1.279s
+	sys	0m0.108s
+
+	Dupa 5 rulari media este de aproximativ 0m1.4s.
+
+	d) pentru 8 procese:
+
+	real	0m0.642s
+	user	0m0.521s
+	sys	0m0.009s
+
+	Dupa 5 rulari media este de aproximativ 0m0.6s.
+
+------------------------------------------------------
+	Pentru cea mai mare imagine alb-negru (rorschach.pgm): 
+
+Cu filtrul 'smooth':
+	a) pentru un proces:
+	
+	real	0m6.594s
+	user	0m2.759s
+	sys	0m3.835s
+
+
+	Dupa 5 rulari media este de aproximativ 0m6.6s.
+
+	b) pentru doua procese:
+	
+	real	0m3.918s
+	user	0m2.368s
+	sys	0m1.142s
+
+
+	Dupa 5 rulari media este de aproximativ 0m3.8s.
+
+	c) pentru 4 procese:
+
+	real	0m2.066s
+	user	0m1.744s
+	sys	0m0.172s
+
+
+	Dupa 5 rulari media este de aproximativ 0m1.9s.
+
+	d) pentru 8 procese:
+
+	real	0m0.346s
+	user	0m0.125s
+	sys	0m0.004s
+
+	Dupa 5 rulari media este de aproximativ 0m0.3s.
+
+=> Din verificarea manuala a timpilor de executie rezulta ca programul scaleaza.
+
+
+
